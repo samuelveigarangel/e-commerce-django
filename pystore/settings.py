@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'products.apps.ProductConfig',
+    'cart.apps.CartConfig',
     # apps terceiros
     "debug_toolbar",
 ]
