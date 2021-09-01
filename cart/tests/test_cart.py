@@ -136,3 +136,22 @@ def test_cart_length(cart):
 
     cart.add(p2, 3)
     assert len(cart) == 4
+
+def test_get_total_price(cart):
+    p1 = ProductFactory()
+    p2 = ProductFactory()
+
+    cart.add(p1)
+    cart.add(p2, 2)
+
+    total_price = (p1.price * 1) + (p2.price * 2)
+
+    assert cart.get_total_price() == total_price
+
+
+def test_cant_add_more_than_max_items(product, cart):
+    cart.add(product, settings.CART_ITEM_MAX_QUANTITY)
+    assert len(cart) == settings.CART_ITEM_MAX_QUANTITY
+
+    cart.add(product, 1)
+    assert len(cart) == settings.CART_ITEM_MAX_QUANTITY
